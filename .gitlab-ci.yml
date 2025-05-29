@@ -1,0 +1,22 @@
+stages:
+  - test
+
+# Запускается на пушах в любые ветки
+echo_hi:
+  stage: test
+  script:
+    - echo hi
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != null'
+      when: always
+    - when: never
+
+# Запускается только на создании тега
+echo_tag:
+  stage: test
+  script:
+    - echo "Это pipeline для тега $CI_COMMIT_TAG"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_TAG != null'
+      when: always
+    - when: never
