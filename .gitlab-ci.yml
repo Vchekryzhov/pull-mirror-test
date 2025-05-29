@@ -1,15 +1,15 @@
 stages:
   - test
 
-# Запускается на пушах в любые ветки
-echo_hi:
-  stage: test
-  script:
-    - echo hi
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != null'
-      when: always
-    - when: never
+# # Запускается на пушах в любые ветки
+# echo_hi:
+#   stage: test
+#   script:
+#     - echo hi
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != null'
+#       when: always
+#     - when: never
 
 # Запускается только на создании тега
 echo_tag:
